@@ -95,4 +95,8 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0; i<speech.size(); i++)
             mVoiceInputTv.setText(speech.get(i));
     }
+
+
+
 }
+

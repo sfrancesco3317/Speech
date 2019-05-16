@@ -6,23 +6,27 @@ import java.util.List;
 
 public class CompareText {
 
-        private String deletePunctuationFromText(String text){
+        private String [] deletePunctuationFromText(String text){
 
             String[] splittedText = text.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
-            return text;
+            return splittedText;
         }
 
-        private List<String> StringArrayToList(String[] text){
+        private ArrayList<String> stringArrayToList(String[] text){
 
-            List<String> alText = new ArrayList<String>();
-            alText = Arrays.asList(text);
+            ArrayList<String> alText = new ArrayList<String>(Arrays.asList(text));
+           // alText = Arrays.asList(text);
+
+            //da array to arraylist
 
             return alText;
         }
 
-        private String CompareStringAndArrayList (String referenceText, ArrayList<String> speechText){
+        private String compareStringAndArrayList (String referenceText, ArrayList<String> speechText){
 
-            String splittedText = deletePunctuationFromText(referenceText);
+            String[] splittedText = deletePunctuationFromText(referenceText);
+            ArrayList<String> referenceTextArray= new ArrayList<>();
+            referenceTextArray= stringArrayToList(splittedText);
 
             return "-1";
         }
