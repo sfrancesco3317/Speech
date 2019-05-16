@@ -49,13 +49,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String text = etCtrlV.getText().toString();
-                String str[] = text.split(",");
-                List<String> alText = new ArrayList<String>();
-                alText = Arrays.asList(str);
+                riferimento.setText(text);
+                //String str[] = text.split(" ");
+                //List<String> alText = new ArrayList<String>();
+                //alText = Arrays.asList(str);
 
 
-                for (int i=0; i<alText.size(); i++)
-                    riferimento.setText(alText.get(i));
+                //for (int i=0; i<alText.size(); i++)
+                   // riferimento.setText(alText.get(i));
             }
         });
     }
