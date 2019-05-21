@@ -45,7 +45,7 @@ public class CompareText {
             }
 
             if (index + mask >= Array.getLength(referenceText)){
-                for (int j=index; j>=index-mask; j--){
+                for (int j=Array.getLength(referenceText)-1; j>=index-mask; j--){
                     if(word == referenceText[j])
                         return true;
                 }
