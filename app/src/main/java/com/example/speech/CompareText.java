@@ -60,10 +60,11 @@ public class CompareText {
             return false;
         }
 
-        private float compareText (String referenceText, ArrayList<String> speechText){
+        private ArrayList<String> compareText (String referenceText, ArrayList<String> speechText){
 
             int errorCount=0;
             float evaluation = 0;
+            ArrayList<String> wrongWords = new ArrayList<>();
 
             String[] splittedText = deletePunctuationFromText(referenceText);
             //ArrayList<String> referenceTextArray= new ArrayList<>();
@@ -80,16 +81,12 @@ public class CompareText {
             int mask = Math.abs(speechSize - referenceSize);
 
             for (int i = 0; i<speechSize; i++){
-                if(!search(splittedText[i], mask, splittedText, i))
+                if(!search(speechArray[i], mask, splittedText, i))
                     errorCount++;
+                    wrongWords.add(speechArray[i]);
             }
 
-            evaluation = (float)errorCount/(float)referenceSize;
-
-            if(evaluation>=0 && evaluation <=1)
-                return(evaluation);
-
-            return -1;
+            return wrongWords;
         }
 
 
