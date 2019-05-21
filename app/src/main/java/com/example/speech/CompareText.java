@@ -31,29 +31,30 @@ public class CompareText {
             return output;
         }
 
-        private boolean search(String word, int mask, String[] referenceText, int index){
+        public boolean search(String word, int mask, String[] referenceText, int index){
 
             //This method search the word in the given mask.
 
             if(mask <= 2)
                 mask = 2;
-            if (mask <= index){
-                for (int i = 0; i < mask; i++){
-                    if(word == referenceText[i])
+            if (index - mask < 0){
+                for (int i = 0; i <= mask; i++){
+                    if(word.equals(referenceText[i]))
                         return true;
+
                 }
             }
 
-            if (index + mask >= Array.getLength(referenceText)){
-                for (int j=Array.getLength(referenceText)-1; j>=index-mask; j--){
-                    if(word == referenceText[j])
+            else if (index + mask >= Array.getLength(referenceText)){
+                for (int j=Array.getLength(referenceText)-1; j>=Array.getLength(referenceText)-mask-1; j--){
+                    if(word.equals(referenceText[j]))
                         return true;
                 }
             }
 
             else {
                 for (int i=index-mask; i<=index+mask; i++){
-                    if(word == referenceText[i])
+                    if(word.equals(referenceText[i]))
                         return true;
                 }
             }
