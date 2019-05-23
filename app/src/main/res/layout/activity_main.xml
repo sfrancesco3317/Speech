@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -42,7 +42,6 @@
             android:hint="Inserisci qui il testo di riferimento:"
             android:gravity="top"/>
 
-
         <TextView
             android:id="@+id/riferimentoTV"
             android:layout_width="wrap_content"
@@ -71,4 +70,100 @@
             android:layout_margin="10dp"
             android:text="@string/app_name" />
     </LinearLayout>
+ </RelativeLayout> -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btnSpeakContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#f5f5f5"
+
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tvScelta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:hint="Come vuoi inserire il testo di riferimento?"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/tvtestoriferimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvScelta"
+        android:layout_marginTop="95dp"
+        android:text="Testo di riferimento:"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/etCtrlV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvtestoriferimento"
+        android:layout_marginTop="19dp"
+        android:gravity="end"
+        android:hint="Inserisci qui il testo di riferimento:"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/riferimentoTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:layout_below="@id/etCtrlV"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:id="@+id/bttOK"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/riferimentoTV"
+        android:layout_gravity="center"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:text="OK"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tvSceltaFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bttOK"
+        android:layout_marginTop="105dp"
+        android:hint="Scatta la foto"
+        android:textSize="20dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+    <View
+        android:id="@+id/vLine"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#FF0000FF"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+/>
+
+    <Button
+        android:id="@+id/btFotocamera"
+        android:layout_width="154dp"
+        android:layout_height="62dp"
+        android:layout_below="@id/tvSceltaFoto"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="Fotocamera" />
+
 </RelativeLayout>
