@@ -7,7 +7,9 @@ import java.util.List;
 
 public class CompareText {
 
-        private String [] deletePunctuationFromText(String text){
+
+        //Test search method
+        public String [] deletePunctuationFromText(String text){
 
             String[] splittedText = text.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
             return splittedText;
@@ -23,11 +25,14 @@ public class CompareText {
             return alText;
         }
 
-        private String[] arrayListToString(ArrayList<String> input){
+        public String[] arrayListToString(ArrayList<String> input){
 
             //This method converts arrayList to array of strings
+            Object[] objNames = input.toArray();
 
-            String[] output = input.toArray(new String[input.size()]);
+            //Second Step: convert Object array to String array
+
+            String[] output = Arrays.copyOf(objNames, objNames.length, String[].class);
             return output;
         }
 
@@ -37,6 +42,8 @@ public class CompareText {
 
             if(mask <= 2)
                 mask = 2;
+
+            //Parte iniziale dell'array
             if (index - mask < 0){
                 for (int i = 0; i <= mask; i++){
                     if(word.equals(referenceText[i]))
@@ -44,14 +51,14 @@ public class CompareText {
 
                 }
             }
-
+            //Parte finale dell'array
             else if (index + mask >= Array.getLength(referenceText)){
                 for (int j=Array.getLength(referenceText)-1; j>=Array.getLength(referenceText)-mask-1; j--){
                     if(word.equals(referenceText[j]))
                         return true;
                 }
             }
-
+            //Parte centrale dell'array
             else {
                 for (int i=index-mask; i<=index+mask; i++){
                     if(word.equals(referenceText[i]))
@@ -61,7 +68,7 @@ public class CompareText {
             return false;
         }
 
-        private ArrayList<String> compareText (String referenceText, ArrayList<String> speechText){
+        public int compareText (String referenceText, ArrayList<String> speechText){
 
             int errorCount=0;
             float evaluation = 0;
@@ -87,8 +94,16 @@ public class CompareText {
                     wrongWords.add(speechArray[i]);
             }
 
-            return wrongWords;
+            if (speechSize < referenceSize)
+                errorCount =  errorCount + mask;
+
+
+
+            return errorCount;
         }
+
+
+
 
 
 }
