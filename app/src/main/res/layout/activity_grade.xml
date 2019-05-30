@@ -41,6 +41,14 @@
         android:textSize="30dp"/>
 
 
+    <Button
+        android:id="@+id/returnBTT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Torna alla pagina principale"
+        android:textSize="15dp"
+        />
+
 
 
 
