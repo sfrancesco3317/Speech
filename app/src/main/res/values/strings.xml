@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Speech</string>
+    <string name="LAUNCH_RECORDING_ACTIVITY">com.example.speech.recording_activity</string>
+    <string name="LAUNCH_GRADE_ACTIVITY">com.example.speech.grade</string>
+
+    <string name="STRINGA_TESTO_RIFERIMENTO_INPUT">STRINGA_TESTO_RIFERIMENTO_INPUT</string>
+    <string name="STRINGA_TESTO_SPEECH_INPUT">STRINGA_TESTO_SPEECH_INPUT</string>
+
 </resources>
