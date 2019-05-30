@@ -68,7 +68,7 @@ public class CompareText {
             return false;
         }
 
-        public int compareText (String referenceText, ArrayList<String> speechText){
+        public ArrayList<String> compareText (String referenceText, ArrayList<String> speechText){
 
             int errorCount=0;
             float evaluation = 0;
@@ -90,16 +90,17 @@ public class CompareText {
 
             for (int i = 0; i<speechSize; i++){
                 if(!search(speechArray[i], mask, splittedText, i))
-                    errorCount++;
                     wrongWords.add(speechArray[i]);
             }
 
-            if (speechSize < referenceSize)
-                errorCount =  errorCount + mask;
+            for (int i = speechSize-1; i<referenceSize; i++){           //Aggiunge le parole mancanti alla fine del testo di riferimento
+                if(!search(splittedText[i], mask, speechArray, i))
+                    wrongWords.add(splittedText[i]);
+            }
 
 
-
-            return errorCount;
+            return wrongWords;
+            //Ritorniamo la lista delle parole errate e mancanti
         }
 
 

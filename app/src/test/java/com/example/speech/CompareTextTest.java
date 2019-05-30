@@ -228,10 +228,11 @@ public class CompareTextTest {
 
         String inputString = "Nel mezzo del cammin";
 
-        CompareText test = new CompareText();
-        int output = test.compareText(inputString, inputArray);
 
-        assertEquals(0, output);
+        CompareText test = new CompareText();
+        ArrayList<String> output = test.compareText(inputString, inputArray);
+
+        assertEquals(0, output.size());
 
     }
     @Test
@@ -247,9 +248,11 @@ public class CompareTextTest {
         String inputString = "Nel mezzo del cammin";
 
         CompareText test = new CompareText();
-        int output = test.compareText(inputString, inputArray);
+        ArrayList<String> output = test.compareText(inputString, inputArray);
 
-        assertEquals(1, output);
+
+
+        assertEquals(1, output.size());
 
     }
 
@@ -266,10 +269,11 @@ public class CompareTextTest {
 
         String inputString = "Nel, mezzo. del cammin";
 
-        CompareText test = new CompareText();
-        int output = test.compareText(inputString, inputArray);
 
-        assertEquals(1, output);
+        CompareText test = new CompareText();
+        ArrayList<String> output = test.compareText(inputString, inputArray);
+
+        assertEquals(1, output.size());
 
     }
 
@@ -285,10 +289,11 @@ public class CompareTextTest {
 
         String inputString = "Nel, mezzo. del cammin, prova prova prova";
 
-        CompareText test = new CompareText();
-        int output = test.compareText(inputString, inputArray);
 
-        assertEquals(3, output);
+        CompareText test = new CompareText();
+        ArrayList<String> output = test.compareText(inputString, inputArray);
+
+        assertEquals(3, output.size());
 
     }
 
@@ -302,13 +307,14 @@ public class CompareTextTest {
         inputArray.add("mezzo");
         inputArray.add("del");
         inputArray.add("cammin");
+        //inputArray.add("test");
 
-        String inputString = "Nel, mezzo. del cammin, prova prova";
+        String inputString = "Nel, mezzo. del cammin, prova prova,";
 
         CompareText test = new CompareText();
-        int output = test.compareText(inputString, inputArray);
+        ArrayList<String> output = test.compareText(inputString, inputArray);
 
-        assertEquals(2, output);
+        assertEquals(3, output.size());
 
     }
 
