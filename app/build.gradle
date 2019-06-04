@@ -28,5 +28,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'androidx.test:core:1.0.0'
     testImplementation 'org.mockito:mockito-core:1.10.19'
+    implementation 'com.android.support:support-annotations:27.1.1'
+    implementation 'com.google.android.gms:play-services-vision:11.4.0'
+    implementation 'com.android.support:support-media-compat:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
 
 }

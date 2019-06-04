@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView riferimento;
     private Button BTTOK;
     private EditText etCtrlV;
+    private Button Bttfoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         mVoiceInputTv = (TextView) findViewById(R.id.voiceInput);
         etCtrlV = (EditText) findViewById(R.id.etCtrlV);
         BTTOK = (Button) findViewById(R.id.bttOK);
+        Bttfoto= (Button) findViewById(R.id.btFotocamera);
+
 
 
         BTTOK.setOnClickListener(new View.OnClickListener() {
@@ -42,8 +45,9 @@ public class MainActivity extends AppCompatActivity {
                 String text = etCtrlV.getText().toString();
                 Intent i = new Intent(getString(R.string.LAUNCH_RECORDING_ACTIVITY));
                 i.putExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT), text);
-
                 startActivity(i);
+
+
                 //riferimento.setText(text);
                 //String str[] = text.split(" ");
                 //List<String> alText = new ArrayList<String>();
@@ -53,7 +57,17 @@ public class MainActivity extends AppCompatActivity {
                 //for (int i=0; i<alText.size(); i++)
                    // riferimento.setText(alText.get(i));
             }
+
         });
+
+        Bttfoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent fotoIntent= new Intent(getString(R.string.LAUNCH_OCR_ACTIVITY));
+                startActivity(fotoIntent);
+            }
+        });
+
     }
 
 }
