@@ -59,14 +59,15 @@ public class OCR extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            Button button = (Button) findViewById(R.id.button);
+            setContentView(R.layout.activity_ocr);
+            Button button = (Button) findViewById(R.id.buttonOCR);
             scanResults = (TextView) findViewById(R.id.results);
             if (savedInstanceState != null) {
                 imageUri = Uri.parse(savedInstanceState.getString(SAVED_INSTANCE_URI));
                 scanResults.setText(savedInstanceState.getString(SAVED_INSTANCE_RESULT));
             }
             detector = new TextRecognizer.Builder(getApplicationContext()).build();
+
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

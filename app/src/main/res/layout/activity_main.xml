@@ -156,15 +156,15 @@
         android:layout_centerHorizontal="true"
 />
 
-    <Button
+    <ImageButton
         android:id="@+id/btFotocamera"
-        android:layout_width="170dp"
-        android:layout_height="81dp"
+        android:layout_width="109dp"
+        android:layout_height="61dp"
         android:layout_below="@id/tvSceltaFoto"
         android:layout_centerInParent="true"
         android:layout_marginTop="22dp"
         android:background="#FFFFFF"
-        android:text="Fotocamera"
-       />
+        android:src="@android:drawable/ic_menu_camera"
+        android:text="Fotocamera" />
 
 </RelativeLayout>
