@@ -156,7 +156,7 @@
         android:layout_centerHorizontal="true"
 />
 
-    <ImageButton
+    <Button
         android:id="@+id/btFotocamera"
         android:layout_width="170dp"
         android:layout_height="81dp"
@@ -165,6 +165,6 @@
         android:layout_marginTop="22dp"
         android:background="#FFFFFF"
         android:text="Fotocamera"
-        app:srcCompat="@mipmap/ic_launcher_foreground" />
+       />
 
 </RelativeLayout>
