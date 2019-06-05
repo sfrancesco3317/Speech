@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView riferimento;
     private Button BTTOK;
     private EditText etCtrlV;
-    private Button Bttfoto;
+    private ImageButton Bttfoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         mVoiceInputTv = (TextView) findViewById(R.id.voiceInput);
         etCtrlV = (EditText) findViewById(R.id.etCtrlV);
         BTTOK = (Button) findViewById(R.id.bttOK);
-        Bttfoto= (Button) findViewById(R.id.btFotocamera);
+        Bttfoto= (ImageButton) findViewById(R.id.btFotocamera);
 
 
 
