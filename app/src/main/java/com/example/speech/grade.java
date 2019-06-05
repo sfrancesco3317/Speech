@@ -3,6 +3,7 @@ package com.example.speech;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,9 +18,12 @@ public class grade extends AppCompatActivity {
     TextView grade_tv = null;
 
     Button return_btt = null;
+    CompareText compareObj = new CompareText();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        float finalGrade = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grade);
 
@@ -33,12 +37,26 @@ public class grade extends AppCompatActivity {
         ArrayList<String> speech = new ArrayList<>();
         speech = intentInput.getStringArrayListExtra(getString(R.string.STRINGA_TESTO_SPEECH_INPUT));
 
+        //Chiamo Compare Text in Background con Async
+        ArrayList<String> wrongWords = new ArrayList<>();
+        wrongWords = compareObj.compareText(reference, speech);
 
+        reference_tv.setText(reference + "test");
+        for (int i = 0; i< speech.size(); i++)
+            speech_tv.setText(speech.get(i));
+
+
+        finalGrade = (float)wrongWords.size()/(float)reference.length();
+
+        grade_tv.setText("Il tuo voto è: " + finalGrade);
 
         return_btt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Torno alla home page.
+
+                Intent returnIntent = new Intent(getString(R.string.LAUNCH_MAINACTIVITY));
+                startActivity(returnIntent);
             }
         });
 

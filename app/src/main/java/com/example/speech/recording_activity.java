@@ -58,6 +58,7 @@ public class recording_activity extends AppCompatActivity {
 
         ArrayList<String> speech = new ArrayList<>();
 
+
         switch (requestCode) {
             case REQ_CODE_SPEECH_INPUT: {
                 if (resultCode == RESULT_OK && null != data) {

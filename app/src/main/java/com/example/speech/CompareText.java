@@ -1,11 +1,13 @@
 package com.example.speech;
 
+import android.os.AsyncTask;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CompareText {
+public class CompareText{
 
 
         //Test search method
@@ -93,10 +95,10 @@ public class CompareText {
                     wrongWords.add(speechArray[i]);
             }
 
-            for (int i = speechSize-1; i<referenceSize; i++){           //Aggiunge le parole mancanti alla fine del testo di riferimento
+            /*for (int i = speechSize-1; i<referenceSize; i++){           //Aggiunge le parole mancanti alla fine del testo di riferimento
                 if(!search(splittedText[i], mask, speechArray, i))
                     wrongWords.add(splittedText[i]);
-            }
+            }*/
 
 
             return wrongWords;
