@@ -298,6 +298,43 @@ public class CompareTextTest {
     }
 
     @Test
+    public void provaprovaprova () throws Exception {
+
+
+        ArrayList<String> inputArray = new ArrayList<>();
+        inputArray.add("prova");
+        inputArray.add("prova");
+        inputArray.add("prova");
+
+        String inputString = "prova prova prova";
+
+
+        CompareText test = new CompareText();
+        ArrayList<String> output = test.compareText(inputString, inputArray);
+
+        assertEquals(0, output.size());
+
+    }
+
+    @Test
+    public void  testtest () throws Exception {
+
+
+        ArrayList<String> inputArray = new ArrayList<>();
+        inputArray.add("test");
+        inputArray.add("prova");
+
+        String inputString = "test";
+
+
+        CompareText test = new CompareText();
+        ArrayList<String> output = test.compareText(inputString, inputArray);
+
+        assertEquals(1, output.size());
+
+    }
+
+    @Test
     public void fullTest() throws Exception {
 
 

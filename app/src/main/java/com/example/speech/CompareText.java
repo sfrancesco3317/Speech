@@ -42,12 +42,14 @@ public class CompareText{
 
             //This method search the word in the given mask.
 
-            if(mask <= 2)
-                mask = 2;
+            if(mask <= 3)
+                mask = 3;
+            if(mask>referenceText.length)
+                mask = referenceText.length-1;
 
             //Parte iniziale dell'array
             if (index - mask < 0){
-                for (int i = 0; i <= mask; i++){
+                for (int i = 0; i < mask; i++){
                     if(word.equals(referenceText[i]))
                         return true;
 
@@ -67,7 +69,9 @@ public class CompareText{
                         return true;
                 }
             }
+
             return false;
+
         }
 
         public ArrayList<String> compareText (String referenceText, ArrayList<String> speechText){
@@ -95,11 +99,12 @@ public class CompareText{
                     wrongWords.add(speechArray[i]);
             }
 
-            /*for (int i = speechSize-1; i<referenceSize; i++){           //Aggiunge le parole mancanti alla fine del testo di riferimento
-                if(!search(splittedText[i], mask, speechArray, i))
-                    wrongWords.add(splittedText[i]);
-            }*/
-
+            if(referenceSize>speechSize) {
+                for (int i = speechSize - 1; i < referenceSize; i++) {           //Aggiunge le parole mancanti alla fine del testo di riferimento
+                    if (!search(splittedText[i], mask, speechArray, i))
+                        wrongWords.add(splittedText[i]);
+                }
+            }
 
             return wrongWords;
             //Ritorniamo la lista delle parole errate e mancanti

@@ -21,11 +21,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.Text;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
-
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,9 +45,6 @@ public class OCR extends AppCompatActivity {
         scanResults= (TextView) findViewById(R.id.results);
 
     } */
-
-
-
 
 
         private static final String LOG_TAG = "Text API";

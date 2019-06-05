@@ -43,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String text = etCtrlV.getText().toString();
-                Intent i = new Intent(getString(R.string.LAUNCH_RECORDING_ACTIVITY));
-                i.putExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT), text);
-                startActivity(i);
-
+                if(text.length()>0){
+                    Intent i = new Intent(getString(R.string.LAUNCH_RECORDING_ACTIVITY));
+                    i.putExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT), text);
+                    startActivity(i);
+                }
 
                 //riferimento.setText(text);
                 //String str[] = text.split(" ");
