@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class grade extends AppCompatActivity {
@@ -19,6 +20,8 @@ public class grade extends AppCompatActivity {
 
     Button return_btt = null;
     CompareText compareObj = new CompareText();
+    private static DecimalFormat df = new DecimalFormat("0");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,9 @@ public class grade extends AppCompatActivity {
         reference_tv.setText(reference);
         speech_tv.setText(speech);
 
-        finalGrade = (float)(reference.length()-wrongWords.size())/(float)reference.length();
-        grade_tv.setText("Il tuo voto è: " + finalGrade);
+        String[] referenceSplitted =compareObj.deletePunctuationFromText(reference);
+        finalGrade = 30*(float)(referenceSplitted.length-wrongWords.size())/(float)referenceSplitted.length;
+        grade_tv.setText("Il tuo voto è: " + df.format(finalGrade) + "/30");
 
         return_btt.setOnClickListener(new View.OnClickListener() {
             @Override
