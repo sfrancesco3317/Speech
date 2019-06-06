@@ -49,15 +49,17 @@ public class grade extends AppCompatActivity {
 
         String[] referenceSplitted =compareObj.deletePunctuationFromText(reference);
         finalGrade = 30*(float)(referenceSplitted.length-wrongWords.size())/(float)referenceSplitted.length;
+        if(finalGrade<0) finalGrade = 0;
         grade_tv.setText("Il tuo voto è: " + df.format(finalGrade) + "/30");
 
         return_btt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Torno alla home page.
+                Intent i = new Intent(grade.this, MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
 
-                Intent returnIntent = new Intent(getString(R.string.LAUNCH_MAINACTIVITY));
-                startActivity(returnIntent);
             }
         });
 
