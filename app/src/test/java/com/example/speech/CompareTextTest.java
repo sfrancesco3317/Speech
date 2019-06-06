@@ -220,17 +220,13 @@ public class CompareTextTest {
     public void fullTestZeroErrors () throws Exception {
 
 
-        ArrayList<String> inputArray = new ArrayList<>();
-        inputArray.add("nel");
-        inputArray.add("mezzo");
-        inputArray.add("del");
-        inputArray.add("cammin");
+       String speech = "Nel mezzo del cammin";
 
-        String inputString = "Nel mezzo del cammin";
+        String reference = "Nel mezzo del cammin";
 
 
         CompareText test = new CompareText();
-        ArrayList<String> output = test.compareText(inputString, inputArray);
+        ArrayList<String> output = test.compareText(reference, speech);
 
         assertEquals(0, output.size());
 
@@ -239,18 +235,12 @@ public class CompareTextTest {
     public void fullTest1Errors () throws Exception {
 
 
-        ArrayList<String> inputArray = new ArrayList<>();
-        inputArray.add("nel");
-        inputArray.add("pezzo");
-        inputArray.add("del");
-        inputArray.add("cammin");
+        String speech = "Nel pezzo del cammin";
 
-        String inputString = "Nel mezzo del cammin";
+        String reference = "Nel mezzo del cammin";
 
         CompareText test = new CompareText();
-        ArrayList<String> output = test.compareText(inputString, inputArray);
-
-
+        ArrayList<String> output = test.compareText(reference, speech);
 
         assertEquals(1, output.size());
 
@@ -260,18 +250,12 @@ public class CompareTextTest {
     public void fullTestMaskAndPunctuation () throws Exception {
 
 
-        ArrayList<String> inputArray = new ArrayList<>();
-        inputArray.add("nel");
-        inputArray.add("pezzo");
-        inputArray.add("mezzo");
-        inputArray.add("del");
-        inputArray.add("cammin");
+        String speech = "Nel pezzo mezzo del cammin";
 
-        String inputString = "Nel, mezzo. del cammin";
-
+        String reference = "Nel, mezzo. del cammin";
 
         CompareText test = new CompareText();
-        ArrayList<String> output = test.compareText(inputString, inputArray);
+        ArrayList<String> output = test.compareText(reference, speech);
 
         assertEquals(1, output.size());
 
@@ -281,17 +265,12 @@ public class CompareTextTest {
     public void fullTestErrors () throws Exception {
 
 
-        ArrayList<String> inputArray = new ArrayList<>();
-        inputArray.add("nel");
-        inputArray.add("mezzo");
-        inputArray.add("del");
-        inputArray.add("cammin");
+        String speech = "Nel mezzo del cammin";
 
-        String inputString = "Nel, mezzo. del cammin, prova prova prova";
-
+        String reference = "Nel, mezzo. del cammin, prova prova prova";
 
         CompareText test = new CompareText();
-        ArrayList<String> output = test.compareText(inputString, inputArray);
+        ArrayList<String> output = test.compareText(reference, speech);
 
         assertEquals(3, output.size());
 
@@ -301,16 +280,13 @@ public class CompareTextTest {
     public void provaprovaprova () throws Exception {
 
 
-        ArrayList<String> inputArray = new ArrayList<>();
-        inputArray.add("prova");
-        inputArray.add("prova");
-        inputArray.add("prova");
+        String speech = "prova prova prova";
 
-        String inputString = "prova prova prova";
+        String reference = "prova prova prova";
 
 
         CompareText test = new CompareText();
-        ArrayList<String> output = test.compareText(inputString, inputArray);
+        ArrayList<String> output = test.compareText(reference, speech);
 
         assertEquals(0, output.size());
 
@@ -320,15 +296,12 @@ public class CompareTextTest {
     public void  testtest () throws Exception {
 
 
-        ArrayList<String> inputArray = new ArrayList<>();
-        inputArray.add("test");
-        inputArray.add("prova");
-
-        String inputString = "test";
+        String speech = "test prova";
+        String reference = "test";
 
 
         CompareText test = new CompareText();
-        ArrayList<String> output = test.compareText(inputString, inputArray);
+        ArrayList<String> output = test.compareText(reference, speech);
 
         assertEquals(1, output.size());
 
@@ -338,18 +311,12 @@ public class CompareTextTest {
     public void fullTest() throws Exception {
 
 
-        ArrayList<String> inputArray = new ArrayList<>();
-        inputArray.add("nel");
-        inputArray.add("pezzo");
-        inputArray.add("mezzo");
-        inputArray.add("del");
-        inputArray.add("cammin");
-        //inputArray.add("test");
+        String speech = "Nel mezzo pezzo del cammin";
 
-        String inputString = "Nel, mezzo. del cammin, prova prova,";
+        String reference = "Nel, mezzo. del cammin, prova prova,";
 
         CompareText test = new CompareText();
-        ArrayList<String> output = test.compareText(inputString, inputArray);
+        ArrayList<String> output = test.compareText(reference, speech);
 
         assertEquals(3, output.size());
 

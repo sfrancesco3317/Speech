@@ -74,34 +74,32 @@ public class CompareText{
 
         }
 
-        public ArrayList<String> compareText (String referenceText, ArrayList<String> speechText){
+        public ArrayList<String> compareText (String referenceText, String speechText){
 
             int errorCount=0;
             float evaluation = 0;
             ArrayList<String> wrongWords = new ArrayList<>();
 
             String[] splittedText = deletePunctuationFromText(referenceText);
+            String[] splittedSpeechText = deletePunctuationFromText(speechText);
             //ArrayList<String> referenceTextArray= new ArrayList<>();
             //referenceTextArray= stringArrayToList(splittedText);
 
-            //Converts speechText to string array,
-            String [] speechArray = arrayListToString(speechText);
-            //Now we have both speech and reference in array of string type
 
             int speechSize, referenceSize;
-            speechSize = Array.getLength(speechArray);
+            speechSize = Array.getLength(splittedSpeechText);
             referenceSize = Array.getLength(splittedText);
 
             int mask = Math.abs(speechSize - referenceSize);
 
             for (int i = 0; i<speechSize; i++){
-                if(!search(speechArray[i], mask, splittedText, i))
-                    wrongWords.add(speechArray[i]);
+                if(!search(splittedSpeechText[i], mask, splittedText, i))
+                    wrongWords.add(splittedSpeechText[i]);
             }
 
             if(referenceSize>speechSize) {
                 for (int i = speechSize - 1; i < referenceSize; i++) {           //Aggiunge le parole mancanti alla fine del testo di riferimento
-                    if (!search(splittedText[i], mask, speechArray, i))
+                    if (!search(splittedText[i], mask, splittedSpeechText, i))
                         wrongWords.add(splittedText[i]);
                 }
             }

@@ -58,14 +58,14 @@ public class recording_activity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        ArrayList<String> speech = new ArrayList<>();
+        String speech = null;
 
 
         switch (requestCode) {
             case REQ_CODE_SPEECH_INPUT: {
                 if (resultCode == RESULT_OK && null != data) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    speech.add(result.get(0));
+                    speech = result.get(0);
                     //mVoiceInputTv.setText(result.get(0));
                 }
                 break;
@@ -75,7 +75,7 @@ public class recording_activity extends AppCompatActivity {
         Intent intent = getIntent();
         String reference = intent.getStringExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT));
 
-        if(speech.size()>0) {
+        if(speech.length()>0) {
 
             Intent intentExit = new Intent(getString(R.string.LAUNCH_GRADE_ACTIVITY));
             intentExit.putExtra(getString(R.string.STRINGA_TESTO_SPEECH_INPUT), speech);

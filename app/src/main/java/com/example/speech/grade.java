@@ -34,16 +34,15 @@ public class grade extends AppCompatActivity {
 
         Intent intentInput = getIntent();
         String reference = intentInput.getStringExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT));
-        ArrayList<String> speech = new ArrayList<>();
-        speech = intentInput.getStringArrayListExtra(getString(R.string.STRINGA_TESTO_SPEECH_INPUT));
+        String speech = null;
+        speech = intentInput.getStringExtra(getString(R.string.STRINGA_TESTO_SPEECH_INPUT));
 
         //Chiamo Compare Text in Background con Async
         ArrayList<String> wrongWords = new ArrayList<>();
         wrongWords = compareObj.compareText(reference, speech);
 
         reference_tv.setText(reference);
-        for (int i = 0; i< speech.size(); i++)
-            speech_tv.setText(speech.get(i));
+        speech_tv.setText(speech);
 
         finalGrade = (float)(reference.length()-wrongWords.size())/(float)reference.length();
         grade_tv.setText("Il tuo voto è: " + finalGrade);
