@@ -1,6 +1,7 @@
 package com.example.speech;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.speech.R;
 
@@ -48,15 +50,15 @@ public class MainActivity extends AppCompatActivity {
                     i.putExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT), text);
                     startActivity(i);
                 }
+                else {
+                    Context context = getApplicationContext();
+                    CharSequence testoToast = "Attenzione, un testo di riferimento vuoto non è un testo di riferimento!";
+                    int duration = Toast.LENGTH_SHORT;
 
-                //riferimento.setText(text);
-                //String str[] = text.split(" ");
-                //List<String> alText = new ArrayList<String>();
-                //alText = Arrays.asList(str);
+                    Toast toast = Toast.makeText(context, testoToast, duration);
+                    toast.show();
+                }
 
-
-                //for (int i=0; i<alText.size(); i++)
-                   // riferimento.setText(alText.get(i));
             }
 
         });

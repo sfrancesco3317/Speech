@@ -23,7 +23,7 @@ public class grade extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        int finalGrade = 0;
+        float finalGrade = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grade);
 
@@ -41,17 +41,11 @@ public class grade extends AppCompatActivity {
         ArrayList<String> wrongWords = new ArrayList<>();
         wrongWords = compareObj.compareText(reference, speech);
 
-        ArrayList<String> testArray = new ArrayList<>();
-
-
-
         reference_tv.setText(reference);
-        for (int i = 0; i< wrongWords.size(); i++)
-            speech_tv.setText(wrongWords.get(i));
+        for (int i = 0; i< speech.size(); i++)
+            speech_tv.setText(speech.get(i));
 
-
-        finalGrade = wrongWords.size();
-
+        finalGrade = (float)(reference.length()-wrongWords.size())/(float)reference.length();
         grade_tv.setText("Il tuo voto è: " + finalGrade);
 
         return_btt.setOnClickListener(new View.OnClickListener() {

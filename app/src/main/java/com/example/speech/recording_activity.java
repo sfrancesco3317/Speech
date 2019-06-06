@@ -1,6 +1,7 @@
 package com.example.speech;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.speech.RecognizerIntent;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -70,17 +72,25 @@ public class recording_activity extends AppCompatActivity {
             }
         }
 
-        for (int i=0; i<speech.size(); i++)
-            voiceInput_TV.setText(speech.get(i));
-
         Intent intent = getIntent();
         String reference = intent.getStringExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT));
 
-        Intent intentExit = new Intent(getString(R.string.LAUNCH_GRADE_ACTIVITY));
-        intentExit.putExtra(getString(R.string.STRINGA_TESTO_SPEECH_INPUT), speech);
-        intentExit.putExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT), reference);
+        if(speech.size()>0) {
 
-        startActivity(intentExit);
+            Intent intentExit = new Intent(getString(R.string.LAUNCH_GRADE_ACTIVITY));
+            intentExit.putExtra(getString(R.string.STRINGA_TESTO_SPEECH_INPUT), speech);
+            intentExit.putExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT), reference);
+
+            startActivity(intentExit);
+        }
+        else{
+            Context context = getApplicationContext();
+            CharSequence testoToast = "Attenzione, la scena muta non è concessa!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, testoToast, duration);
+            toast.show();
+        }
     }
 
 
