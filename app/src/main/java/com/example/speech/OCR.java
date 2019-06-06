@@ -92,7 +92,7 @@ public class OCR extends AppCompatActivity {
 
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            Intent i= new Intent(getString(R.string.LAUNCH_RECORDING_ACTIVITY));
+            Intent i= new Intent(getString(R.string.LAUNCH_OUTPUT_OCR_ACTIVITY));
             Intent errorIntent = new Intent(getString((R.string.LAUNCH_MAINACTIVITY)));
             if (requestCode == PHOTO_REQUEST && resultCode == RESULT_OK) {
                 launchMediaScanIntent();

@@ -4,12 +4,12 @@
 
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="true"/>
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"
-    />
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,9 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
-            android:value="ocr"/>
+            android:value="ocr" />
+
         <activity android:name=".OCR">
             <intent-filter>
                 <action android:name="android.intent.action.OCR" />
@@ -29,11 +31,11 @@
         </activity>
 
         <activity android:name=".grade">
-        <intent-filter>
-            <action android:name="android.intent.action.GRADE" />
+            <intent-filter>
+                <action android:name="android.intent.action.GRADE" />
 
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".recording_activity">
@@ -52,6 +54,17 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Output_OCR">
+
+            <intent-filter>
+                <action android:name="android.intent.action.OUTPUTOCR" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -59,9 +72,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
-
     </application>
 
 </manifest>

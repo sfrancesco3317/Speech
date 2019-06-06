@@ -4,7 +4,9 @@
     <string name="LAUNCH_MAINACTIVITY">android.intent.action.MAIN</string>
     <string name="LAUNCH_GRADE_ACTIVITY">android.intent.action.GRADE</string>
     <string name="LAUNCH_OCR_ACTIVITY">android.intent.action.OCR</string>
+    <string name="LAUNCH_OUTPUT_OCR_ACTIVITY">android.intent.action.OUTPUTOCR</string>
     <string name="STRINGA_TESTO_RIFERIMENTO_INPUT">STRINGA_TESTO_RIFERIMENTO_INPUT</string>
     <string name="STRINGA_TESTO_SPEECH_INPUT">STRINGA_TESTO_SPEECH_INPUT</string>
+
 
 </resources>
