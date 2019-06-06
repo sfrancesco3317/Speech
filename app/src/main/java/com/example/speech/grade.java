@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -17,7 +18,8 @@ public class grade extends AppCompatActivity {
     TextView reference_tv = null;
     TextView speech_tv = null;
     TextView grade_tv = null;
-
+    TextView numWrongWords_tv = null;
+    TextView wrongWords_tv =null;
     Button return_btt = null;
     CompareText compareObj = new CompareText();
     private static DecimalFormat df = new DecimalFormat("0");
@@ -30,6 +32,8 @@ public class grade extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grade);
 
+        wrongWords_tv=(TextView)findViewById(R.id.tvWrongWords);
+        numWrongWords_tv= (TextView) findViewById(R.id.tvNumWrongWords);
         reference_tv = (TextView) findViewById(R.id.referenceTV);
         speech_tv = (TextView) findViewById(R.id.speechTV);
         grade_tv = (TextView) findViewById(R.id.gradeTV);
@@ -51,6 +55,12 @@ public class grade extends AppCompatActivity {
         finalGrade = 30*(float)(referenceSplitted.length-wrongWords.size())/(float)referenceSplitted.length;
         if(finalGrade<0) finalGrade = 0;
         grade_tv.setText("Il tuo voto è: " + df.format(finalGrade) + "/30");
+        //stampo numero parole sbagliate
+        numWrongWords_tv.setText("Il numero di parole sbagliate è: "+ wrongWords.size());
+        //stampo le parole sbagliate eliminando le [] dell'arraylist
+        String wrongWordsString= new String();
+        wrongWordsString = wrongWords.toString().replace("[","").replace("]","");
+        wrongWords_tv.setText("Le parole sbagliate sono: " + wrongWordsString + "\n");
 
         return_btt.setOnClickListener(new View.OnClickListener() {
             @Override
