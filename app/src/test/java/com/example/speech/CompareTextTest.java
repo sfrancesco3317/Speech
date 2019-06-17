@@ -242,7 +242,7 @@ public class CompareTextTest {
         CompareText test = new CompareText();
         ArrayList<String> output = test.compareText(reference, speech);
 
-        assertEquals(1, output.size());
+        assertEquals(2, output.size());
 
     }
 

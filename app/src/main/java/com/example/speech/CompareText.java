@@ -27,6 +27,15 @@ public class CompareText{
             return alText;
         }
 
+
+        public String deleteSpacesFromBeginningAndBottom(String inputString){
+
+            inputString.replaceAll("^\\s+", "");
+            inputString.replaceAll("\\s+$", "");
+
+            return inputString;
+        }
+
         public String[] arrayListToString(ArrayList<String> input){
 
             //This method converts arrayList to array of strings
@@ -49,8 +58,11 @@ public class CompareText{
 
             //Parte iniziale dell'array
             if (index - mask < 0){
-                for (int i = 0; i < mask; i++){
-                    if(word.equals(referenceText[i]))
+                for (int i = 0; i <= mask; i++){
+                    if (i >= referenceText.length) {
+                        break;
+                    }
+                    else if (word.equals(referenceText[i]))
                         return true;
 
                 }
@@ -76,9 +88,13 @@ public class CompareText{
 
         public ArrayList<String> compareText (String referenceText, String speechText){
 
+
             int errorCount=0;
             float evaluation = 0;
             ArrayList<String> wrongWords = new ArrayList<>();
+
+            referenceText = deleteSpacesFromBeginningAndBottom(referenceText);
+            speechText = deleteSpacesFromBeginningAndBottom(speechText);
 
             String[] splittedText = deletePunctuationFromText(referenceText);
             String[] splittedSpeechText = deletePunctuationFromText(speechText);
@@ -92,17 +108,22 @@ public class CompareText{
 
             int mask = Math.abs(speechSize - referenceSize);
 
+            for (int i = 0; i<referenceSize; i++){
+                if(!search(splittedText[i], mask, splittedSpeechText, i))
+                    wrongWords.add(splittedText[i]);
+            }
+
             for (int i = 0; i<speechSize; i++){
                 if(!search(splittedSpeechText[i], mask, splittedText, i))
                     wrongWords.add(splittedSpeechText[i]);
             }
 
-            if(referenceSize>speechSize) {
+            /*if(referenceSize>speechSize) {
                 for (int i = speechSize - 1; i < referenceSize; i++) {           //Aggiunge le parole mancanti alla fine del testo di riferimento
                     if (!search(splittedText[i], mask, splittedSpeechText, i))
                         wrongWords.add(splittedText[i]);
                 }
-            }
+            }*/
 
             return wrongWords;
             //Ritorniamo la lista delle parole errate e mancanti
