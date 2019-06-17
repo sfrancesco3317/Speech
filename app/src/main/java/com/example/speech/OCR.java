@@ -85,7 +85,7 @@ public class OCR extends AppCompatActivity {
                     if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                         takePicture();
                     } else {
-                        Toast.makeText(OCR.this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OCR.this, "Permesso rifiutato!", Toast.LENGTH_SHORT).show();
                     }
             }
         }
@@ -118,7 +118,7 @@ public class OCR extends AppCompatActivity {
                             }
                         }
                         if (textBlocks.size() == 0) {
-                            scanResults.setText("Scan Failed: Found nothing to scan");
+                            scanResults.setText("Operazione fallita: testo non trovato!");
                         } else {
                             /*scanResults.setText(scanResults.getText() + "Blocks: " + "\n");
                             scanResults.setText(scanResults.getText() + blocks + "\n");
@@ -133,11 +133,11 @@ public class OCR extends AppCompatActivity {
                             startActivity(i);
                         }
                     } else {
-                        scanResults.setText("Could not set up the detector!");
+                        scanResults.setText("Impossibile avviare la fotocamera!");
                         startActivity(errorIntent);
                     }
                 } catch (Exception e) {
-                    Toast.makeText(this, "Failed to load Image", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "Impossibile caricare l'immagine!", Toast.LENGTH_SHORT)
                             .show();
                     Log.e(LOG_TAG, e.toString());
                 }
