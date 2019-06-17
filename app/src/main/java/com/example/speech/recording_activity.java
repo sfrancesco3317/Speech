@@ -7,6 +7,7 @@ import android.media.Image;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -75,21 +76,24 @@ public class recording_activity extends AppCompatActivity {
         Intent intent = getIntent();
         String reference = intent.getStringExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT));
 
-        if(speech.length()>0) {
+        if(speech == null) {
+
+            Context context = getApplicationContext();
+            CharSequence testoToast = "Attenzione, la scena muta non è concessa!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, testoToast, duration);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.show();
+        }
+
+        else{
 
             Intent intentExit = new Intent(getString(R.string.LAUNCH_GRADE_ACTIVITY));
             intentExit.putExtra(getString(R.string.STRINGA_TESTO_SPEECH_INPUT), speech);
             intentExit.putExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT), reference);
 
             startActivity(intentExit);
-        }
-        else{
-            Context context = getApplicationContext();
-            CharSequence testoToast = "Attenzione, la scena muta non è concessa!";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, testoToast, duration);
-            toast.show();
         }
     }
 
