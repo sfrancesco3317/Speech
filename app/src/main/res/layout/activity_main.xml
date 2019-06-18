@@ -1,109 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-<RelativeLayout
-    android:id="@+id/btnSpeakContainer"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/righe2">
 
-    android:background="#f5f5f5"
-
-    android:orientation="vertical">
-
-
-    <TextView
-        android:id="@+id/tvScelta"
+    <RelativeLayout
+        android:id="@+id/btnSpeakContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:text="Come vuoi inserire il testo di riferimento?"
-        android:textAllCaps="true"
-        android:textColor="#E53935"
-        android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:layout_height="match_parent"
+
+        android:background="@drawable/righe2"
+
+        android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/tvtestoriferimento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvScelta"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="95dp"
-        android:text="Testo di riferimento:"
-        android:textAllCaps="false"
-        android:textColor="#C0CA33"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/etCtrlV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvtestoriferimento"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="19dp"
-        android:backgroundTint="#C0CA33"
-        android:cursorVisible="true"
-        android:gravity="end"
-        android:hint="Inserisci qui il testo di riferimento:"
-        android:shadowColor="#C0CA33"
-        android:textColor="#000000"
-        android:textColorHighlight="#70706E"
-        android:textColorHint="#8E8F87"
-        android:textColorLink="#6D6D6B"
-        android:textCursorDrawable="@android:color/holo_green_light" />
-
-    <TextView
-        android:id="@+id/riferimentoTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:layout_below="@id/etCtrlV"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        />
-
-    <Button
-        android:id="@+id/bttOK"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/riferimentoTV"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="2dp"
-        android:background="#CDDC39"
-        android:gravity="center"
-        android:text="OK" />
+        <TextView
+            android:id="@+id/tvScelta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:text="Come vuoi inserire il testo di riferimento?"
+            android:textAllCaps="true"
+            android:textColor="#E53935"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
 
 
-    <TextView
-        android:id="@+id/tvSceltaFoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bttOK"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="105dp"
-        android:text="Scatta la foto"
-        android:textColor="#1E88E5"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvtestoriferimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvScelta"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="95dp"
+            android:text="Testo di riferimento:"
+            android:textAllCaps="false"
+            android:textColor="#C0CA33"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etCtrlV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvtestoriferimento"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="19dp"
+            android:backgroundTint="#C0CA33"
+            android:cursorVisible="true"
+            android:gravity="end"
+            android:hint="Inserisci qui il testo di riferimento:"
+            android:shadowColor="@color/common_google_signin_btn_text_dark_default"
+            android:textColor="#000000"
+            android:textColorHighlight="#70706E"
+            android:textColorHint="#8E8F87"
+            android:textColorLink="#6D6D6B"
+            android:textCursorDrawable="@color/common_google_signin_btn_text_dark_default" />
+
+        <TextView
+            android:id="@+id/riferimentoTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etCtrlV"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="end" />
+
+        <Button
+            android:id="@+id/bttOK"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/riferimentoTV"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:background="#CDDC39"
+            android:gravity="center"
+            android:text="OK" />
 
 
-    <ImageButton
-        android:id="@+id/btFotocamera"
-        android:layout_width="109dp"
-        android:layout_height="61dp"
-        android:layout_below="@id/tvSceltaFoto"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="22dp"
-        android:background="#03A9F4"
-        android:src="@android:drawable/ic_menu_camera"
-        android:text="Fotocamera" />
+        <TextView
+            android:id="@+id/tvSceltaFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bttOK"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="105dp"
+            android:text="Scatta la foto"
+            android:textColor="#1E88E5"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+        <ImageButton
+            android:id="@+id/btFotocamera"
+            android:layout_width="109dp"
+            android:layout_height="61dp"
+            android:layout_below="@id/tvSceltaFoto"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="22dp"
+            android:background="#03A9F4"
+            android:src="@android:drawable/ic_menu_camera"
+            android:text="Fotocamera" />
 
     </RelativeLayout>
 </ScrollView>

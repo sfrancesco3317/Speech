@@ -3,6 +3,8 @@ package com.example.speech;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +46,7 @@ public class grade extends AppCompatActivity {
         grade_tv = (TextView) findViewById(R.id.gradeTV);
         return_btt = (Button) findViewById(R.id.returnBTT);
 
+
         Intent intentInput = getIntent();
         String reference = intentInput.getStringExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT));
         String speech = null;
@@ -57,10 +60,12 @@ public class grade extends AppCompatActivity {
         //wrongWords = compareObj.compareText(reference, speech);
 
         try{
-        wrongWords = myCompareText.execute(inputParams).get();}
-    catch (Exception e) {
+        wrongWords = myCompareText.execute(inputParams).get();
+        }
+
+        catch (Exception e) {
         e.printStackTrace();
-    }
+        }
 
         reference_tv.setText(reference);
         speech_tv.setText(speech);
@@ -68,9 +73,9 @@ public class grade extends AppCompatActivity {
         String[] referenceSplitted =compareObj.deletePunctuationFromText(reference);
         finalGrade = 30*(float)(referenceSplitted.length-wrongWords.size())/(float)referenceSplitted.length;
         if(finalGrade<0) finalGrade = 0;
-        grade_tv.setText("Il tuo voto è: " + df.format(finalGrade) + "/30");
+        grade_tv.setText("\n" +"\n"+"Il tuo voto è: " + df.format(finalGrade) + "/30"+ "\n");
         //stampo numero parole sbagliate
-        numWrongWords_tv.setText("Il numero di parole sbagliate è: "+ wrongWords.size());
+        numWrongWords_tv.setText("Il numero di parole sbagliate è: "+ wrongWords.size()+ "\n");
         //stampo le parole sbagliate eliminando le [] dell'arraylist
         String wrongWordsString= new String();
         wrongWordsString = wrongWords.toString().replace("[","").replace("]","");
