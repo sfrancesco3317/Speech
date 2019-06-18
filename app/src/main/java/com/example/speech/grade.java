@@ -11,8 +11,12 @@ import android.widget.TextView;
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
 
 public class grade extends AppCompatActivity {
+
+
 
 
     TextView reference_tv = null;
@@ -27,6 +31,7 @@ public class grade extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         float finalGrade = 0;
         super.onCreate(savedInstanceState);
@@ -44,9 +49,18 @@ public class grade extends AppCompatActivity {
         String speech = null;
         speech = intentInput.getStringExtra(getString(R.string.STRINGA_TESTO_SPEECH_INPUT));
 
+        CompareText.CompareTextParams inputParams = new CompareText.CompareTextParams(reference, speech);
+        CompareText myCompareText = new CompareText();
+
         //Chiamo Compare Text in Background con Async
         ArrayList<String> wrongWords = new ArrayList<>();
-        wrongWords = compareObj.compareText(reference, speech);
+        //wrongWords = compareObj.compareText(reference, speech);
+
+        try{
+        wrongWords = myCompareText.execute(inputParams).get();}
+    catch (Exception e) {
+        e.printStackTrace();
+    }
 
         reference_tv.setText(reference);
         speech_tv.setText(speech);

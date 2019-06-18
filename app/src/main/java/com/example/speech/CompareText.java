@@ -7,10 +7,43 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CompareText{
 
 
-        //Test search method
+public class CompareText extends AsyncTask<CompareText.CompareTextParams, Void, ArrayList<String>>{ //This container allows me to pass multiple params to the doInBackground
+
+
+    public static class CompareTextParams {
+        String referenceText;
+        String speechText;
+
+
+        CompareTextParams(String referenceText, String speechText) {
+            this.referenceText = referenceText;
+            this.speechText = speechText;
+
+        }
+    }
+
+    @Override
+    protected ArrayList<String> doInBackground(CompareTextParams... params) {
+        ArrayList<String> result= null;
+        try {
+             result = compareText(params[0].referenceText, params[0].speechText);
+
+        } catch (Exception e) {
+        e.printStackTrace();
+        }
+        return result;
+
+    }
+
+    @Override
+    protected void onPostExecute(ArrayList<String> strings) {
+        super.onPostExecute(strings);
+
+    }
+
+    //Test search method
         public String [] deletePunctuationFromText(String text){
 
             String[] splittedText = text.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
