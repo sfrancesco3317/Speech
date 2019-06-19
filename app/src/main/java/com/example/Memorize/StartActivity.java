@@ -19,10 +19,10 @@ public class StartActivity extends AppCompatActivity {
 
                 Intent i = new Intent(StartActivity.this, MainActivity.class);
                 startActivity(i);
+                finish();
 
             }
         }, 2000);
-
 
     }
 }

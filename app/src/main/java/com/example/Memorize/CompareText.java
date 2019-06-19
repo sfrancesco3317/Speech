@@ -61,9 +61,9 @@ public class CompareText extends AsyncTask<CompareText.CompareTextParams, Void, 
 
         public String deleteSpacesFromBeginningAndBottom(String inputString){
 
-            inputString.replaceAll("^\\s+", "");
-            inputString.replaceAll("\\s+$", "");
-
+            inputString=inputString.replaceAll("^\\s+", "");
+            inputString=inputString.replaceAll("\\s+$", "");
+            inputString=inputString.trim();
             return inputString;
         }
 
