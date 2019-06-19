@@ -120,10 +120,10 @@ public class grade extends AppCompatActivity {
 
 
             if((finalGrade >= 18) || (finalGrade < 30)) {
-                immVoto.setImageResource(R.drawable.depositphotos_50707617_stock_illustration_green_acrylic_validation_v_icon);
+                immVoto.setImageResource(R.drawable.promosso);
                 }
             else{
-                immVoto.setImageResource(R.drawable.X_Rossa);
+                immVoto.setImageResource(R.drawable.bocciato);
                 }
             }
 
