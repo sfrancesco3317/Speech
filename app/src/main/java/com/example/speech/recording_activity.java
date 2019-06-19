@@ -67,7 +67,6 @@ public class recording_activity extends AppCompatActivity {
                 if (resultCode == RESULT_OK && null != data) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     speech = result.get(0);
-                    //mVoiceInputTv.setText(result.get(0));
                 }
                 break;
             }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 public class StartActivity extends AppCompatActivity {
 
+    //activity iniziale che si chiuderà in automatico dopo 2 secondi
     private Handler mHandler = new Handler();
 
     @Override
