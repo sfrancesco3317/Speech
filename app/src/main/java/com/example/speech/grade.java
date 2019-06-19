@@ -52,34 +52,68 @@ public class grade extends AppCompatActivity {
         String speech = null;
         speech = intentInput.getStringExtra(getString(R.string.STRINGA_TESTO_SPEECH_INPUT));
 
-        CompareText.CompareTextParams inputParams = new CompareText.CompareTextParams(reference, speech);
-        CompareText myCompareText = new CompareText();
-
-        //Chiamo Compare Text in Background con Async
-        ArrayList<String> wrongWords = new ArrayList<>();
-        //wrongWords = compareObj.compareText(reference, speech);
-
-        try{
-        wrongWords = myCompareText.execute(inputParams).get();
-        }
-
-        catch (Exception e) {
-        e.printStackTrace();
-        }
+        boolean testIfEquals = false;
+        reference = compareObj.deleteSpacesFromBeginningAndBottom(reference);
+        speech = compareObj.deleteSpacesFromBeginningAndBottom(speech);
+        String[] referenceSplitted = compareObj.deletePunctuationFromText(reference);
+        String[] speechSplitted = compareObj.deletePunctuationFromText(speech);
 
         reference_tv.setText(reference);
         speech_tv.setText(speech);
 
-        String[] referenceSplitted =compareObj.deletePunctuationFromText(reference);
-        finalGrade = 30*(float)(referenceSplitted.length-wrongWords.size())/(float)referenceSplitted.length;
-        if(finalGrade<0) finalGrade = 0;
-        grade_tv.setText("\n" +"\n"+"Il tuo voto è: " + df.format(finalGrade) + "/30"+ "\n");
-        //stampo numero parole sbagliate
-        numWrongWords_tv.setText("Il numero di parole sbagliate è: "+ wrongWords.size()+ "\n");
-        //stampo le parole sbagliate eliminando le [] dell'arraylist
-        String wrongWordsString= new String();
-        wrongWordsString = wrongWords.toString().replace("[","").replace("]","");
-        wrongWords_tv.setText("Le parole sbagliate sono: " + wrongWordsString + "\n");
+        if(referenceSplitted.length == speechSplitted.length)
+            for(int i = 0; i < referenceSplitted.length; i++){
+                if(referenceSplitted[i].equals(speechSplitted[i])){
+                    testIfEquals = true;
+                }
+                else {
+                    testIfEquals = false;
+                    break;
+                }
+            }
+
+        if (testIfEquals == true){
+            finalGrade = 30;
+
+            grade_tv.setText("\n" + "\n" + "Il tuo voto è: " + df.format(finalGrade) + "/30" + "\n");
+        }
+
+        else {
+            CompareText.CompareTextParams inputParams = new CompareText.CompareTextParams(referenceSplitted, speechSplitted);
+            CompareText myCompareText = new CompareText();
+
+            //Chiamo Compare Text in Background con Async
+            ArrayList<String> wrongWords = new ArrayList<>();
+            //wrongWords = compareObj.compareText(reference, speech);
+
+            try {
+                wrongWords = myCompareText.execute(inputParams).get();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            reference_tv.setText(reference);
+            speech_tv.setText(speech);
+
+
+            finalGrade = 30 * (referenceSplitted.length - ((float) wrongWords.size() / 2)) / (float) referenceSplitted.length;
+
+            if (finalGrade < 0) finalGrade = 0;
+            if (finalGrade > 29) finalGrade = 29;
+
+
+            grade_tv.setText("\n" + "\n" + "Il tuo voto è: " + df.format(finalGrade) + "/30" + "\n");
+
+            //stampo numero parole sbagliate
+            numWrongWords_tv.setText("Il numero di parole sbagliate è: " + wrongWords.size() + "\n");
+
+            //stampo le parole sbagliate eliminando le [] dell'arraylist
+            String wrongWordsString = null;
+            wrongWordsString = wrongWords.toString().replace("[", "").replace("]", "");
+
+            wrongWords_tv.setText("Le parole sbagliate sono: " + wrongWordsString + "\n");
+
+        }
 
         return_btt.setOnClickListener(new View.OnClickListener() {
             @Override

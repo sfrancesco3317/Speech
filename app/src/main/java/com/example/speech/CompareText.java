@@ -13,11 +13,11 @@ public class CompareText extends AsyncTask<CompareText.CompareTextParams, Void, 
 
 
     public static class CompareTextParams {
-        String referenceText;
-        String speechText;
+        String[] referenceText;
+        String[] speechText;
 
 
-        CompareTextParams(String referenceText, String speechText) {
+        CompareTextParams(String[] referenceText, String[] speechText) {
             this.referenceText = referenceText;
             this.speechText = speechText;
 
@@ -161,6 +161,33 @@ public class CompareText extends AsyncTask<CompareText.CompareTextParams, Void, 
             return wrongWords;
             //Ritorniamo la lista delle parole errate e mancanti
         }
+
+    public ArrayList<String> compareText (String[] referenceText, String[] speechText){
+
+
+        ArrayList<String> wrongWords = new ArrayList<>();
+
+
+        int speechSize, referenceSize;
+        speechSize = Array.getLength(referenceText);
+        referenceSize = Array.getLength(speechText);
+
+        int mask = Math.abs(speechSize - referenceSize);
+
+        for (int i = 0; i<referenceSize; i++){
+            if(!search(referenceText[i], mask, speechText, i))
+                wrongWords.add(referenceText[i]);
+        }
+
+        for (int i = 0; i<speechSize; i++){
+            if(!search(speechText[i], mask, referenceText, i))
+                wrongWords.add(speechText[i]);
+        }
+
+
+        return wrongWords;
+        //Ritorniamo la lista delle parole errate e mancanti
+    }
 
 
 
