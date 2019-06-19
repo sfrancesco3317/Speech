@@ -121,9 +121,6 @@ public class CompareText extends AsyncTask<CompareText.CompareTextParams, Void, 
 
         public ArrayList<String> compareText (String referenceText, String speechText){
 
-
-            int errorCount=0;
-            float evaluation = 0;
             ArrayList<String> wrongWords = new ArrayList<>();
 
             referenceText = deleteSpacesFromBeginningAndBottom(referenceText);
@@ -131,9 +128,6 @@ public class CompareText extends AsyncTask<CompareText.CompareTextParams, Void, 
 
             String[] splittedText = deletePunctuationFromText(referenceText);
             String[] splittedSpeechText = deletePunctuationFromText(speechText);
-            //ArrayList<String> referenceTextArray= new ArrayList<>();
-            //referenceTextArray= stringArrayToList(splittedText);
-
 
             int speechSize, referenceSize;
             speechSize = Array.getLength(splittedSpeechText);
@@ -141,22 +135,15 @@ public class CompareText extends AsyncTask<CompareText.CompareTextParams, Void, 
 
             int mask = Math.abs(speechSize - referenceSize);
 
-            for (int i = 0; i<referenceSize; i++){
-                if(!search(splittedText[i], mask, splittedSpeechText, i))
-                    wrongWords.add(splittedText[i]);
-            }
-
             for (int i = 0; i<speechSize; i++){
                 if(!search(splittedSpeechText[i], mask, splittedText, i))
                     wrongWords.add(splittedSpeechText[i]);
             }
 
-            /*if(referenceSize>speechSize) {
-                for (int i = speechSize - 1; i < referenceSize; i++) {           //Aggiunge le parole mancanti alla fine del testo di riferimento
-                    if (!search(splittedText[i], mask, splittedSpeechText, i))
-                        wrongWords.add(splittedText[i]);
-                }
-            }*/
+            for (int i = 0; i<referenceSize; i++){
+                if(!search(splittedText[i], mask, splittedSpeechText, i))
+                    wrongWords.add(splittedText[i]);
+            }
 
             return wrongWords;
             //Ritorniamo la lista delle parole errate e mancanti

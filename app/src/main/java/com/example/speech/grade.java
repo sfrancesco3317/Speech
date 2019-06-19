@@ -102,20 +102,20 @@ public class grade extends AppCompatActivity {
             }
             else {
                 finalGrade = 30 * (referenceSplitted.length - ((float) wrongWords.size() / 2)) / (float) referenceSplitted.length;
-                    if (finalGrade < 0) finalGrade = 0;
-                    if (finalGrade > 29) finalGrade = 29;
+                if (finalGrade < 0) finalGrade = 0;
+                if (finalGrade > 29) finalGrade = 29;
 
+                grade_tv.setText("\n" + "\n" + "Il tuo voto è: " + df.format(finalGrade) + "/30" + "\n");
 
-                    grade_tv.setText("\n" + "\n" + "Il tuo voto è: " + df.format(finalGrade) + "/30" + "\n");
-
-                    //stampo numero parole sbagliate
+                //stampo numero parole sbagliate
+                if(wrongWords.size()>0)
                     numWrongWords_tv.setText("Il numero di parole sbagliate è: " + wrongWords.size() + "\n");
 
-                    //stampo le parole sbagliate eliminando le [] dell'arraylist
-                    String wrongWordsString = null;
-                    wrongWordsString = wrongWords.toString().replace("[", "").replace("]", "");
+                //stampo le parole sbagliate eliminando le [] dell'arraylist
+                String wrongWordsString = null;
+                wrongWordsString = wrongWords.toString().replace("[", "").replace("]", "");
 
-                    wrongWords_tv.setText("Le parole sbagliate sono: " + wrongWordsString + "\n");
+                wrongWords_tv.setText("Le parole sbagliate sono: " + wrongWordsString + "\n");
             }
 
 
