@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Speech</string>
+    <string name="app_name">Memorize</string>
     <string name="LAUNCH_RECORDING_ACTIVITY">android.intent.action.REC</string>
     <string name="LAUNCH_MAINACTIVITY">android.intent.action.MAIN</string>
     <string name="LAUNCH_GRADE_ACTIVITY">android.intent.action.GRADE</string>

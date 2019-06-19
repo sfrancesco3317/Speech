@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/righe2"
-    tools:context="com.example.speech.MainActivity">
+    tools:context="com.example.Memorize.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"

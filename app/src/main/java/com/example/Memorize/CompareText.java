@@ -1,12 +1,10 @@
-package com.example.speech;
+package com.example.Memorize;
 
 import android.os.AsyncTask;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 
 
 public class CompareText extends AsyncTask<CompareText.CompareTextParams, Void, ArrayList<String>>{ //This container allows me to pass multiple params to the doInBackground

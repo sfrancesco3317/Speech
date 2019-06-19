@@ -1,4 +1,4 @@
-package com.example.speech;
+package com.example.Memorize;
 
 import org.junit.Test;
 
