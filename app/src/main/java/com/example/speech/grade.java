@@ -79,7 +79,7 @@ public class grade extends AppCompatActivity {
         }
 
         else {
-            CompareText.CompareTextParams inputParams = new CompareText.CompareTextParams(referenceSplitted, speechSplitted);
+            CompareText.CompareTextParams inputParams = new CompareText.CompareTextParams(reference, speech);
             CompareText myCompareText = new CompareText();
 
             //Chiamo Compare Text in Background con Async
@@ -95,23 +95,28 @@ public class grade extends AppCompatActivity {
             reference_tv.setText(reference);
             speech_tv.setText(speech);
 
+            if(wrongWords == null){
+                finalGrade = 29;
+                grade_tv.setText("\n" + "\n" + "Il tuo voto è: " + finalGrade + "/30" + "\n");
+            }
+            else {
+                finalGrade = 30 * (referenceSplitted.length - ((float) wrongWords.size() / 2)) / (float) referenceSplitted.length;
+                    if (finalGrade < 0) finalGrade = 0;
+                    if (finalGrade > 29) finalGrade = 29;
 
-            finalGrade = 30 * (referenceSplitted.length - ((float) wrongWords.size() / 2)) / (float) referenceSplitted.length;
 
-            if (finalGrade < 0) finalGrade = 0;
-            if (finalGrade > 29) finalGrade = 29;
+                    grade_tv.setText("\n" + "\n" + "Il tuo voto è: " + df.format(finalGrade) + "/30" + "\n");
 
+                    //stampo numero parole sbagliate
+                    numWrongWords_tv.setText("Il numero di parole sbagliate è: " + wrongWords.size() + "\n");
 
-            grade_tv.setText("\n" + "\n" + "Il tuo voto è: " + df.format(finalGrade) + "/30" + "\n");
+                    //stampo le parole sbagliate eliminando le [] dell'arraylist
+                    String wrongWordsString = null;
+                    wrongWordsString = wrongWords.toString().replace("[", "").replace("]", "");
 
-            //stampo numero parole sbagliate
-            numWrongWords_tv.setText("Il numero di parole sbagliate è: " + wrongWords.size() + "\n");
+                    wrongWords_tv.setText("Le parole sbagliate sono: " + wrongWordsString + "\n");
+            }
 
-            //stampo le parole sbagliate eliminando le [] dell'arraylist
-            String wrongWordsString = null;
-            wrongWordsString = wrongWords.toString().replace("[", "").replace("]", "");
-
-            wrongWords_tv.setText("Le parole sbagliate sono: " + wrongWordsString + "\n");
 
         }
 

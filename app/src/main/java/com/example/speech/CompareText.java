@@ -13,11 +13,11 @@ public class CompareText extends AsyncTask<CompareText.CompareTextParams, Void, 
 
 
     public static class CompareTextParams {
-        String[] referenceText;
-        String[] speechText;
+        String referenceText;
+        String speechText;
 
 
-        CompareTextParams(String[] referenceText, String[] speechText) {
+        CompareTextParams(String referenceText, String speechText) {
             this.referenceText = referenceText;
             this.speechText = speechText;
 
