@@ -32,21 +32,6 @@ import java.io.FileNotFoundException;
 
 public class OCR extends AppCompatActivity {
 
-  /*  Button button = null;
-    TextView scanResults= null;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ocr);
-
-        button= (Button) findViewById(R.id.button);
-        scanResults= (TextView) findViewById(R.id.results);
-
-    } */
-
-
         private static final String LOG_TAG = "Text API";
         private static final int PHOTO_REQUEST = 10;
         private TextView scanResults;
@@ -105,14 +90,14 @@ public class OCR extends AppCompatActivity {
                         String lines = "";
                         String words = "";
                         for (int index = 0; index < textBlocks.size(); index++) {
-                            //extract scanned text blocks here
+                            //estraggo il blocco
                             TextBlock tBlock = textBlocks.valueAt(index);
                             blocks = blocks + tBlock.getValue() + "\n" + "\n";
                             for (Text line : tBlock.getComponents()) {
-                                //extract scanned text lines here
+                                //estraggo le linee
                                 lines = lines + line.getValue() + "\n";
                                 for (Text element : line.getComponents()) {
-                                    //extract scanned text words here
+                                    //estraggo le parole
                                     words = words + element.getValue() + " ";
                                 }
                             }
@@ -120,15 +105,7 @@ public class OCR extends AppCompatActivity {
                         if (textBlocks.size() == 0) {
                             scanResults.setText("Operazione fallita: testo non trovato!");
                         } else {
-                            /*scanResults.setText(scanResults.getText() + "Blocks: " + "\n");
-                            scanResults.setText(scanResults.getText() + blocks + "\n");
-                            scanResults.setText(scanResults.getText() + "---------" + "\n");
-                            scanResults.setText(scanResults.getText() + "Lines: " + "\n");
-                            scanResults.setText(scanResults.getText() + lines + "\n");
-                            scanResults.setText(scanResults.getText() + "---------" + "\n");
-                            scanResults.setText(scanResults.getText() + "Words: " + "\n"); */
                             scanResults.setText(scanResults.getText() + words + "\n");
-                           // scanResults.setText(scanResults.getText() + "---------" + "\n");
                             i.putExtra(getString(R.string.STRINGA_TESTO_RIFERIMENTO_INPUT), words);
                             startActivity(i);
                         }

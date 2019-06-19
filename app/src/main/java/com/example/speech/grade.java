@@ -8,6 +8,7 @@ import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
@@ -18,9 +19,6 @@ import java.util.concurrent.ExecutionException;
 
 public class grade extends AppCompatActivity {
 
-
-
-
     TextView reference_tv = null;
     TextView speech_tv = null;
     TextView grade_tv = null;
@@ -29,6 +27,7 @@ public class grade extends AppCompatActivity {
     Button return_btt = null;
     CompareText compareObj = new CompareText();
     private static DecimalFormat df = new DecimalFormat("0");
+    ImageView immVoto= null;
 
 
     @Override
@@ -39,6 +38,7 @@ public class grade extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grade);
 
+        immVoto= (ImageView) findViewById(R.id.ivImmVoto);
         wrongWords_tv=(TextView)findViewById(R.id.tvWrongWords);
         numWrongWords_tv= (TextView) findViewById(R.id.tvNumWrongWords);
         reference_tv = (TextView) findViewById(R.id.referenceTV);
@@ -76,6 +76,7 @@ public class grade extends AppCompatActivity {
             finalGrade = 30;
 
             grade_tv.setText("\n" + "\n" + "Il tuo voto è: " + df.format(finalGrade) + "/30" + "\n");
+            immVoto.setImageResource(R.drawable.vototrenta);
         }
 
         else {
@@ -118,7 +119,14 @@ public class grade extends AppCompatActivity {
             }
 
 
-        }
+            if((finalGrade >= 18) || (finalGrade < 30)) {
+                immVoto.setImageResource(R.drawable.depositphotos_50707617_stock_illustration_green_acrylic_validation_v_icon);
+                }
+            else{
+                immVoto.setImageResource(R.drawable.X_Rossa);
+                }
+            }
+
 
         return_btt.setOnClickListener(new View.OnClickListener() {
             @Override

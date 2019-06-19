@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Testo:"
+        android:text="Testo scansionato:"
         android:textAllCaps="false"
         android:textStyle="normal|bold"
         app:layout_constraintLeft_toLeftOf="parent"

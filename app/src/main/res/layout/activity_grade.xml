@@ -68,5 +68,13 @@
             android:text="Torna alla pagina principale"
             android:textSize="20dp" />
 
+
+        <ImageView
+            android:id="@+id/ivImmVoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src= "@drawable/vototrenta"/>
+
     </LinearLayout>
 </ScrollView>
