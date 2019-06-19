@@ -76,7 +76,7 @@ public class grade extends AppCompatActivity {
             finalGrade = 30;
 
             grade_tv.setText("\n" + "\n" + "Il tuo voto è: " + df.format(finalGrade) + "/30" + "\n");
-            immVoto.setImageResource(R.drawable.vototrenta);
+            immVoto.setImageResource(R.drawable.promosso);
         }
 
         else {
@@ -119,7 +119,7 @@ public class grade extends AppCompatActivity {
             }
 
 
-            if((finalGrade >= 18) || (finalGrade < 30)) {
+            if((finalGrade >= 18) && (finalGrade < 30)) {
                 immVoto.setImageResource(R.drawable.promosso);
                 }
             else{
