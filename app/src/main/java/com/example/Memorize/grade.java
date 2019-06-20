@@ -97,7 +97,7 @@ public class grade extends AppCompatActivity {
             else {
 
                 //Variabile che ci dà un'idea di quanto abbiamo ripetuto del riferimento
-                float referencePercent = (float) referenceSplitted.length/speechSplitted.length;
+                float referencePercent = (float) speechSplitted.length /referenceSplitted.length;
                 if(referencePercent>1) referencePercent = 1;
                 if(referencePercent<0) referencePercent = 0;
 

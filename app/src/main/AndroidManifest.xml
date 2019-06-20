@@ -23,7 +23,8 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="ocr" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.StartActivity" />
 
@@ -31,7 +32,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".OCR">
+        <activity android:name=".OCR"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.OCR" />
 
@@ -39,7 +41,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".grade">
+        <activity android:name=".grade"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.GRADE" />
 
@@ -47,7 +50,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".recording_activity">
+        <activity android:name=".recording_activity"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.REC" />
 
@@ -55,7 +59,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".StartActivity">
+        <activity android:name=".StartActivity"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,7 +68,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Output_OCR">
+        <activity android:name=".Output_OCR"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.OUTPUTOCR" />
 
