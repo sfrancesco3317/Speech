@@ -101,7 +101,12 @@ public class grade extends AppCompatActivity {
                 if(referencePercent>1) referencePercent = 1;
                 if(referencePercent<0) referencePercent = 0;
 
-                finalGrade = referencePercent * 30 * (referenceSplitted.length - ((float) wrongWords.size()/ 2)) / (float) referenceSplitted.length;
+                if(referencePercent < 0.7){ //Questo ci aiuta ad aumentare la gravità dell'errore dato da una parola mancante nel caso di bassa percentale
+                    finalGrade = referencePercent * 30 * (referenceSplitted.length - ((float) wrongWords.size())) / (float) referenceSplitted.length;
+                }
+                else{
+                    finalGrade = referencePercent * 30 * (referenceSplitted.length - ((float) wrongWords.size()/ 2)) / (float) referenceSplitted.length;
+                }
                 if (finalGrade < 0) finalGrade = 0;
                 if (finalGrade > 29) finalGrade = 29;
 
