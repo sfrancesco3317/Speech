@@ -80,7 +80,6 @@ public class grade extends AppCompatActivity {
 
             //Chiamo Compare Text in Background con Async
             ArrayList<String> wrongWords = new ArrayList<>();
-            //wrongWords = compareObj.compareText(reference, speech);
 
             try {
                 wrongWords = myCompareText.execute(inputParams).get();
@@ -96,7 +95,13 @@ public class grade extends AppCompatActivity {
                 grade_tv.setText("\n" + "\n" + "Il tuo voto è: " + finalGrade + "/30" + "\n");
             }
             else {
-                finalGrade = 30 * (referenceSplitted.length - ((float) wrongWords.size() / 2)) / (float) referenceSplitted.length;
+
+                //Variabile che ci dà un'idea di quanto abbiamo ripetuto del riferimento
+                float referencePercent = (float) referenceSplitted.length/speechSplitted.length;
+                if(referencePercent>1) referencePercent = 1;
+                if(referencePercent<0) referencePercent = 0;
+
+                finalGrade = referencePercent * 30 * (referenceSplitted.length - ((float) wrongWords.size()/ 2)) / (float) referenceSplitted.length;
                 if (finalGrade < 0) finalGrade = 0;
                 if (finalGrade > 29) finalGrade = 29;
 
