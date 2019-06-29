@@ -1,9 +1,11 @@
 package com.example.Memorize;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -40,6 +42,7 @@ public class OCR extends AppCompatActivity {
         private static final int REQUEST_WRITE_PERMISSION = 20;
         private static final String SAVED_INSTANCE_URI = "uri";
         private static final String SAVED_INSTANCE_RESULT = "result";
+        final int PIC_CROP = 1;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,7 @@ public class OCR extends AppCompatActivity {
                 case REQUEST_WRITE_PERMISSION:
                     if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                         takePicture();
+                        getImageOrientation();
                     } else {
                         Toast.makeText(OCR.this, "Permesso rifiutato!", Toast.LENGTH_SHORT).show();
                     }
@@ -81,6 +85,7 @@ public class OCR extends AppCompatActivity {
             Intent errorIntent = new Intent(getString((R.string.LAUNCH_MAINACTIVITY)));
             if (requestCode == PHOTO_REQUEST && resultCode == RESULT_OK) {
                 launchMediaScanIntent();
+
                 try {
                     Bitmap bitmap = decodeBitmapUri(this, imageUri);
                     if (detector.isOperational() && bitmap != null) {
@@ -160,6 +165,21 @@ public class OCR extends AppCompatActivity {
 
             return BitmapFactory.decodeStream(ctx.getContentResolver()
                     .openInputStream(uri), null, bmOptions);
+        }
+
+        private int getImageOrientation(){
+            final String[] imageColumns = { MediaStore.Images.Media._ID, MediaStore.Images.ImageColumns.ORIENTATION };
+            final String imageOrderBy = MediaStore.Images.Media._ID+" DESC";
+            Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                    imageColumns, null, null, imageOrderBy);
+
+            if(cursor.moveToFirst()){
+                int orientation = cursor.getInt(cursor.getColumnIndex(MediaStore.Images.ImageColumns.ORIENTATION));
+                cursor.close();
+                return orientation;
+            } else {
+                return 0;
+            }
         }
 
     }
